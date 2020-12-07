@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>load</title>
+</head>
+<body>
+    
+
+    <script>
+        // only document (HTML만 완료되면 호출)
+        window.addEventListener('DOMContentLoaded', () => {
+            console.log('DOMContentLoaded')
+        });
+
+        // after resources (css, images)가 전부 다운로드가 되면 호출 
+        window.addEventListener('load', () => {
+            console.log('load')
+        });
+
+        // before unload
+        window.addEventListener('beforeunload', () => {
+            console.log('beforeunload')
+        });
+
+        // resource is being unloaded
+        window.addEventListener('unload', () => {
+            console.log('unload')
+        });
+    </script>
+</body>
+</html>
