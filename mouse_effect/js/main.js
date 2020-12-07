@@ -5,7 +5,13 @@ const horizontal = document.querySelector(".horizontal");
 const target = document.querySelector(".target");
 const tag = document.querySelector(".tag");
 
-document.addEventListener("mousemove", (e) => {
+function coordinates(x, y) {
+  tag.innerHTML = `
+    좌표 (${x}px, ${y}px)
+  `;
+}
+
+window.addEventListener("mousemove", (e) => {
   const x = e.clientX;
   const y = e.clientY;
   console.log(`${x}, ${y}`);
@@ -16,7 +22,6 @@ document.addEventListener("mousemove", (e) => {
   target.style.top = `${y}px`;
   tag.style.top = `${y}px`;
   tag.style.left = `${x}px`;
-  tag.innerHTML = `
-    좌표 (${x}px, ${y}px)
-  `;
+
+  coordinates(x, y);
 });
