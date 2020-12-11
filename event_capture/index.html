@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event_capture</title>
+
+    <style>
+        .outer{
+            width: 600px;
+            height: 600px;
+            background-color: yellow;
+            
+        }
+        .middle{
+            width: 50%;
+            height: 50%;
+            background-color: thistle;
+            /* transform: translate(50%, 50%); */
+            margin: auto;
+            transform: translateY(50%);
+            
+            
+        }
+        button{
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="middle">
+            <button>Click me</button>
+        </div>
+    </div>
+    <script>
+        const outer = document.querySelector('.outer')
+        const middle = document.querySelector('.middle')
+        const button = document.querySelector('button')
+
+        outer.addEventListener('click', (e) => {
+            if(e.target !== e.currentTarget){
+                return;
+            }
+            console.log(`outer: ${e.currentTarget}, ${e.target}`)
+        })
+        middle.addEventListener('click', (e) => {
+            if(e.target !== e.currentTarget){
+                return;
+            }
+            console.log(`middle: ${e.currentTarget}, ${e.target}`)
+        })
+        button.addEventListener('click', (e) => {
+            console.log(`button1: ${e.currentTarget}, ${e.target}`)
+        })
+        button.addEventListener('click', (e) => {
+            console.log(`button2: ${e.currentTarget}, ${e.target}`)
+        })
+        // 
+    </script>
+</body>
+</html>
