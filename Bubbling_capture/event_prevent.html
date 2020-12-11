@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prevent</title>
+    <style>
+        div{
+            width: 250px;
+            height: 250px;
+            background-color: yellow;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="checkbox">
+    </div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        document.addEventListener('wheel', event => {
+            console.log('scrolling');
+            event.preventDefault();
+        }, {passive: false});
+        const checkbox = document.querySelector('input')
+        checkbox.addEventListener('click', event => {
+            console.log('checked');
+            event.preventDefault();
+        })
+    </script>
+    <!-- 
+        이벤트가 발생 했을때 기본적으로 브라우저가 처리하는 행동들을 원치않을때 사용
+
+        - 스크롤 이벤트가 발생하면 페이지가 위/아래로 움직이지 임
+        - 체크 박스를 클릭하면 체크박스가 선택/비선택 하는
+        - 버튼을 누르면 눌러지는 효과가 나오는
+        - 링크를 클릭하면 링크가 열리는 등등
+
+        이벤트가 발생했을때 우리가 정의한 특별한 다른 기능을 수행 하고, 위와 같은 브라우저의
+        기능을 원하지 않을때 `preventDefault`를 사용
+     -->
+</body>
+</html>

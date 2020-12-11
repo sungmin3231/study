@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>event_capture</title>
 
     <style>
-        .outer{
+        .outer {
             width: 600px;
             height: 600px;
             background-color: yellow;
-            
+
         }
-        .middle{
+
+        .middle {
             width: 50%;
             height: 50%;
             background-color: thistle;
             /* transform: translate(50%, 50%); */
             margin: auto;
             transform: translateY(50%);
-            
-            
+
+
         }
-        button{
+
+        button {
             position: relative;
             top: 50%;
             left: 50%;
@@ -31,6 +34,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="outer">
         <div class="middle">
@@ -43,13 +47,13 @@
         const button = document.querySelector('button')
 
         outer.addEventListener('click', (e) => {
-            if(e.target !== e.currentTarget){
+            if (e.target !== e.currentTarget) {
                 return;
             }
             console.log(`outer: ${e.currentTarget}, ${e.target}`)
         })
         middle.addEventListener('click', (e) => {
-            if(e.target !== e.currentTarget){
+            if (e.target !== e.currentTarget) {
                 return;
             }
             console.log(`middle: ${e.currentTarget}, ${e.target}`)
@@ -60,7 +64,19 @@
         button.addEventListener('click', (e) => {
             console.log(`button2: ${e.currentTarget}, ${e.target}`)
         })
-        // 
+        //
     </script>
+
+    <!-- 
+    - 이벤트 종류에 있어서 **부모/자식**에서 동일한 이벤트만 버블링 된다
+    - 형재 노드에서는 발생안됨
+    - 만약 **부모요소에** 클릭이벤트를 등록하고 **자식 요소**에도 동일한 클릭이벤트를 등록 하면 **자식요소를** 클릭하면 **부모요소**에 등록해 놓은 클릭 이벤트 콜백이 실행, 하지만 **부모요소**에 마우스다운 이벤트를 등록하고 **자식 요소**에 동일한 클릭 이벤트를 동륵 해놓으면 **자식요소**를 클릭하면 **부모요소**에 등록해 놓은 마우스 다운 이벤트 콜백이 실행 되지 않음
+
+    > stopPropagation(), stopImmediatePropagation()함수는 쓰지 않는 것이 좋음!
+
+    - 무언가 특별한 기능을 수행하는 코드가 있을 수도 있는데 위함수를 사용하면 실행하던 이벤트 외엔 바로 요청을 끝내버림
+    - 프로젝트 규모가 커지면 이것 때문에 예상치 못한 오류가 발생해서 고생함(디버깅 지옥!!)
+     -->
 </body>
+
 </html>
