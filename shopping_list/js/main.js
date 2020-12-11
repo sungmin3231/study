@@ -7,7 +7,7 @@ const addBtn = document.querySelector(".footer__button");
 function onAdd() {
   // 1. 사용자가 입력한 텍스트를 받아옴
   const text = input.value;
-  if (text == "") {
+  if (text === "") {
     input.focus();
     return;
   }
