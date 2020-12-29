@@ -2,7 +2,7 @@
 
 import PopUp from "./popup.js";
 import * as sound from "./sound.js";
-import GameBuilder, { Reason } from "./game.js";
+import { GameBuilder, Reason } from "./game.js";
 
 const gameFinishBanner = new PopUp();
 const game = new GameBuilder()

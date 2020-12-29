@@ -8,7 +8,7 @@ const tag = document.querySelector(".tag");
 addEventListener("load", () => {
   const targetRect = target.getBoundingClientRect();
   const targetHalfWidth = targetRect.width / 2;
-  const targetHalfHeight = targetRect.width / 2;
+  const targetHalfHeight = targetRect.height / 2;
 
   function coordinates(x, y) {
     tag.innerHTML = `
@@ -16,7 +16,7 @@ addEventListener("load", () => {
   `;
   }
 
-  document.addEventListener("mousemove", (e) => {
+  document.addEventListener("mousemove", e => {
     const x = e.clientX;
     const y = e.clientY;
     console.log(`${x}, ${y}`);
