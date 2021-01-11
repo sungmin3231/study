@@ -1,19 +1,16 @@
 import React, { Component } from "react";
 
 class Habit extends Component {
-  state = {
-    count: 0,
+  handleIncrement = () => {
+    this.props.onIncrement(this.props.habit);
   };
 
-  handleIncrement = e => {
-    //   state 오브젝트 안에 있는 count를 증가 한뒤 state를 업데이트 해야함.
-    //  업데이트를 해줄때는 setState를 사용해야함
-    this.setState({ count: this.state.count + 1 });
+  handleDecrement = () => {
+    this.props.onDecrement(this.props.habit);
   };
 
-  handleDecrement = e => {
-    const count = this.state.count - 1;
-    this.setState({ count: count < 0 ? 0 : count });
+  handleDelete = () => {
+    this.props.onDelete(this.props.habit);
   };
 
   render() {
@@ -34,7 +31,10 @@ class Habit extends Component {
         >
           <i className="fas fa-minus-square"></i>
         </button>
-        <button className="habit-button habit-delete">
+        <button
+          className="habit-button habit-delete"
+          onClick={this.handleDelete}
+        >
           <i className="fas fa-trash"></i>
         </button>
       </li>
