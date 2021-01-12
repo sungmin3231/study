@@ -1,9 +1,8 @@
 import "./app.css";
-import Habit from "./components/habit";
+import Habits from "./components/habits";
 
 function App() {
-  const name = "sungmin";
-  return <Habit />;
+  return <Habits />;
 }
 
 export default App;
